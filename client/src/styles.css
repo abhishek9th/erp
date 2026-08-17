@@ -1,0 +1,83 @@
+:root {
+  --bg: #0f1420;
+  --card: #1a2233;
+  --line: #2a3550;
+  --text: #e6ecf5;
+  --muted: #8ea0be;
+  --accent: #4f8cff;
+  --ok: #2fbf71;
+  --bad: #ff5c72;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Montserrat", system-ui, -apple-system, sans-serif;
+}
+
+.wrap { max-width: 900px; margin: 0 auto; padding: 32px 20px 64px; }
+
+header h1 { margin: 0; font-size: 1.9rem; letter-spacing: -0.02em; }
+.sub { color: var(--muted); margin: 4px 0 24px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.form { display: flex; flex-direction: column; gap: 14px; max-width: 420px; }
+.form label { display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; color: var(--muted); }
+.form input {
+  background: #0d1220;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 11px 12px;
+  color: var(--text);
+  font-size: 1rem;
+}
+.form input:focus { outline: none; border-color: var(--accent); }
+button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:hover { filter: brightness(1.08); }
+.hint { color: var(--muted); font-size: 0.8rem; margin: 0; }
+
+.error {
+  background: #3a1420;
+  border: 1px solid var(--bad);
+  color: #ffc2cc;
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+
+.course.highlight { border-color: var(--accent); }
+.course-head { display: flex; justify-content: space-between; align-items: baseline; }
+.course-name { font-weight: 600; }
+.pct { font-size: 1.4rem; font-weight: 700; }
+
+.bar { position: relative; height: 8px; background: #0d1220; border-radius: 6px; margin: 12px 0 8px; overflow: hidden; }
+.bar-fill { height: 100%; background: var(--ok); }
+.course.bad .bar-fill { background: var(--bad); }
+.bar-mark { position: absolute; top: 0; left: 75%; width: 2px; height: 100%; background: var(--muted); }
+
+.meta { color: var(--muted); font-size: 0.85rem; }
+.verdict { margin-top: 10px; font-size: 0.9rem; }
+.verdict.good { color: var(--ok); }
+.verdict.warn { color: var(--bad); }
