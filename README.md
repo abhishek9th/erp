@@ -10,7 +10,36 @@ behalf, fetches your attendance, and tells you:
 > This tool only ever uses **your own credentials** to read **your own data**. Nothing is
 > stored server-side; the session token lives only in memory for the life of the request.
 
-## Why a backend proxy?
+---
+
+## ⭐ Recommended: the userscript (fully automatic, zero config)
+
+You said it best — *"I just log into CyberVidya and it fetches everything."* That's the
+[`userscript/kiet-attendance.user.js`](userscript/kiet-attendance.user.js) version.
+
+It runs **on the CyberVidya page itself**, so it needs **no login rebuild, no encryption
+key, no OTP handling, and no proxy**. You log in exactly as you always do; the script rides
+on your real session, watches the site's own network calls, and pops a panel showing your
+%, classes you can skip, and classes you need. Nothing is hardcoded — it auto-discovers the
+attendance data.
+
+**Install (once):**
+
+1. Add the **Tampermonkey** extension to your browser (Chrome/Edge/Firefox).
+2. Open [`userscript/kiet-attendance.user.js`](userscript/kiet-attendance.user.js), click
+   **Raw** on GitHub — Tampermonkey offers to install it. Click **Install**.
+3. Go to `kiet.cybervidya.net`, log in normally, and open your attendance page. A panel
+   appears top-right with everything computed.
+
+That's the whole thing. The Vite app + Node proxy below is an **alternative** for people who
+want a standalone dashboard instead of an on-page panel — it's more work because it has to
+reimplement the encrypted login.
+
+---
+
+## Alternative: standalone dashboard (Vite app + Node proxy)
+
+### Why a backend proxy?
 
 CyberVidya's frontend is an Angular app that:
 
